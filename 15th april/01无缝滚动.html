@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #box{
+            width: 500px;
+            height: 300px;
+            border: 1px solid;
+            margin: 100px auto;
+            padding: 0 10px;
+            line-height: 2em;
+            transition: all 0.1s;
+            overflow: hidden;
+            /* overflow: scroll; */
+            /* 做无缝滚动效果，容器要给高度，且高度要小于内容的高度 */
+        }
+        ul{
+            list-style: none;
+        }
+        span{
+            margin-right: 10px;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+        }
+        a:hover{
+            color: indianred;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="list">
+            <li>
+                <span>1.</span>
+                <a href="#">李嘉诚耗资42亿港元抄底自家长实地产 传达何种信息？</a>
+            </li>
+            <li>
+                <span>2.</span>
+                <a href="#">国家砸1500亿给清华紫光，中国芯片产业将走向何方？</a>
+            </li>
+            <li>
+                <span>3.</span>
+                <a href="#">美媒称美国务院雇员因“向中国提供情报”被起诉</a>
+            </li>
+            <li>
+                <span>4.</span>
+                <a href="#">日本回应放行“台湾国”护照 称只是个案 正在调查</a>
+            </li>
+            <li>
+                <span>5.</span>
+                <a href="#">香港“占中”9人今日受审 罪名成立最高可判7年</a>
+            </li>
+            <li>
+                <span>6.</span>
+                <a href="#">广州楼市调控丢“王炸” 12天“炸”出新地王</a>
+            </li>
+            <li>
+                <span>7.</span>
+                <a href="#">外媒：特朗普撕毁巴黎协定 将美国带回“煤炭时代”</a>
+            </li>
+            <li>
+                <span>8.</span>
+                <a href="#">最高检：年底前，将全面向公安派出所派驻“检察院”</a>
+            </li>
+            <li>
+                <span>9.</span>
+                <a href="#">李嘉诚耗资42亿港元抄底自家长实地产 传达何种信息？</a>
+            </li>
+            <li>
+                <span>10.</span>
+                <a href="#">成都出新规:禁止占用城市道路开展棋牌娱乐活动</a>
+            </li>
+            <li>
+                <span>11.</span>
+                <a href="#">李嘉诚耗资42亿港元抄底自家长实地产 传达何种信息？</a>
+            </li>
+            <li>
+                <span>12.</span>
+                <a href="#">日军方成立“海军陆战队” 要在钓鱼岛搞事？</a>
+            </li>
+            <li>
+                <span>13.</span>
+                <a href="#">成都出新规:禁止占用城市道路开展棋牌娱乐活动</a>
+            </li>
+            <li>
+                <span>10.</span>
+                <a href="#">韩星州民众与警方对峙 阻拦"萨德"施工用车入场</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var div=document.getElementById('box');
+        var list=document.getElementById('list');
+        var content=list.innerHTML;
+        list.innerHTML=list.innerHTML+content;
+        console.log(list.innerHTML);
+
+        //定义方法目的是让div的内容可以向上滚动
+        function moveUp(){
+            if(div.scrollTop>400){
+                div.scrollTop=0;
+            }else{
+                 div.scrollTop=div.scrollTop+1;
+            }
+            timeout=setTimeout(moveUp,100)
+        }
+        //启动定时器反复调用函数
+        var timer=setInterval(moveUp,100);
+        var timeout=null;
+        //设置鼠标移入移出事件
+        div.onmouseenter=function(){
+            clearTimeout(timeout);
+            clearInterval(timer);
+            timer=null;
+        };
+        div.onmouseout=function(){
+            clearTimeout(timeout);
+            if(timer==null){
+                timer=setInterval(moveUp,100);
+            }
+        };
+    </script>
+</body>
+</html>
