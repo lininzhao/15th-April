@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" id="box">hello</div>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous">
+    </script>
+
+    <script>
+        //jQuery的入口函数1
+        console.log($);
+        $(function(){
+            console.log($('div').text());
+        });
+        //jquery的入口函数2
+        $(document).ready(function(){
+            console.log($('div').text());
+        });
+
+
+        /*
+        $(function(){
+            console.log($('div').text());
+        });
+
+        $(document).ready(function(){
+            console.log($('div').text());
+        });
+
+        */
+    </script>
+</body>
+</html>
